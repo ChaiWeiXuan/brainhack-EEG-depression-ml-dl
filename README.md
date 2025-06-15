@@ -10,12 +10,13 @@ title: "Decoding Depression via EEG Biomarkers: A Neurocomputational Approach us
 
 names: [Wei-Xuan Chai]
 
-github_repo: [https://github.com/PSY6983-2021/project_template](https://github.com/ChaiWeiXuan/brainhack-EEG-depression-ml-dl)
+github_repo: https://github.com/ChaiWeiXuan/brainhack-EEG-depression-ml-dl
 
 tags: [EEG, depression, svm, eegnet]
 
 summary: "This project was conducted as part of Brainhack School 2025. It aimed to classify major depressive disorder (MDD) using temporal-domain EEG features (i.e., band power), applying both machine learning (SVM) and deep learning (EEGNet) models."
 
+---
 
 ## Project definition
 
@@ -63,9 +64,9 @@ For this analysis, we used:
 ### Deliverables
 
 At the end of this project, we will have:
- - 1. Preprocessing & Bandpower Feature.ipynb
- - 2. Machine Learning_SVM.ipynb
- - 3. Deep Learning_EEGNet.ipynb
+1. Preprocessing & Bandpower Feature.ipynb
+2. Machine Learning_SVM.ipynb
+3. Deep Learning_EEGNet.ipynb
 These deliverables reflect the full pipeline from raw EEG preprocessing to both traditional ML and DL models training.
 
 
@@ -90,25 +91,23 @@ Beyond modeling, I also learned how to structure a project repository, push upda
 
 ### Results
 
-Preliminary results suggested that SVM achieved higher accuracy (> 0.95) compared to EEGNet (~0.8), possibly due to limited hyperparameter tuning and model optimization in this early-stage exploration.
+Preliminary results suggested that SVM achieved higher accuracy (> 0.95) compared to EEGNet (~0.8), possibly due to limited hyperparameter tuning and model optimization in this early-stage exploration. While deep learning provides promising end-to-end modeling capabilities, classical approaches like SVM may still offer superior performance when the dataset is small and features are carefully extracted.
 
-While deep learning provides promising end-to-end modeling capabilities, classical approaches like SVM may still offer superior performance when the dataset is small and features are carefully extracted.
 
 #### Deliverable 1: Preprocessing & Bandpower Feature
 
 An EEG preprocessing pipeline was implemented using MNE-Python, followed by the extraction of frequency-domain features (band power) for classification purposes.
 
+
 #### Deliverable 2: Machine Learning_SVM
 
-A Support Vector Machine (SVM) model was trained and evaluated based on the extracted band power features. Grid search with 10-fold cross-validation was used to tune key hyperparameters (e.g., C, gamma).
+A Support Vector Machine (SVM) model was trained and evaluated based on the extracted band power features. Grid search with 10-fold cross-validation was used to tune key hyperparameters (e.g., C, gamma). Several trials were conducted, including the integration of feature selection and dimensionality reduction using PCA. However, these modifications did not improve the accuracy, suggesting that the original band power features already effectively captured discriminative patterns related to depression in the EEG data, or that such techniques may not be beneficial in this particular case.
 
-Several trials were conducted, including the integration of feature selection and dimensionality reduction using PCA. However, these modifications did not improve the accuracy, suggesting that the original band power features already effectively captured discriminative patterns related to depression in the EEG data, or that such techniques may not be beneficial in this particular case.
 
 #### Deliverable 3: Deep Learning_EEGNet
 
-An EEGNet model [page](https://github.com/vlawhern/arl-eegmodels) was trained and evaluated using preprocessed EEG epoch data, without extracting band power features. The model was implemented on Google Colab with GPU support.
+An EEGNet model [page](https://github.com/vlawhern/arl-eegmodels) was trained and evaluated using preprocessed EEG epoch data, without extracting band power features. The model was implemented on Google Colab with GPU support. Hyperparameter tuning was conducted using both Keras Tuner and manual for-loop implementations, each within a 10-fold cross-validation framework. Due to time constraints, only minimal tuning was performed, which may explain the lower performance (~80% accuracy). Nevertheless, this pipeline demonstrates how CNN-based architectures can be applied end-to-end to EEG data.
 
-Hyperparameter tuning was conducted using both Keras Tuner and manual for-loop implementations, each within a 10-fold cross-validation framework. Due to time constraints, only minimal tuning was performed, which may explain the lower performance (~80% accuracy). Nevertheless, this pipeline demonstrates how CNN-based architectures can be applied end-to-end to EEG data.
 
 
 ## Conclusion and acknowledgement
