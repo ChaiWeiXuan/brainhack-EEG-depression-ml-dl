@@ -17,7 +17,6 @@ tags: [EEG, depression, svm, eegnet]
 summary: "This project was conducted as part of Brainhack School 2025. It aimed to classify major depressive disorder (MDD) using temporal-domain EEG features (i.e., band power), applying both machine learning (SVM) and deep learning (EEGNet) models."
 
 
-
 ## Project definition
 
 ### Background
@@ -43,8 +42,9 @@ The project will rely on the following technologies:
 - tensorflow, keras: For deep learning models.
 
 3. External Models / Resources
+- Brainhack School Modules: Working with MNE-Python and EEG-BIDS [page](https://school-brainhack.github.io/modules/mne_python/)
+- Brainhack School Modules: Machine learning for neuroimaging [page](https://school-brainhack.github.io/modules/machine_learning_neuroimaging/)
 - EEGNet implementation from ARL (Army Research Laboratory) EEGModels Project [page](https://github.com/vlawhern/arl-eegmodels)
-- Brainhack School Modules [page]((https://school.brainhackmtl.org/))
 
 
 ### Data
@@ -66,7 +66,7 @@ At the end of this project, we will have:
  - 1. Preprocessing & Bandpower Feature.ipynb
  - 2. Machine Learning_SVM.ipynb
  - 3. Deep Learning_EEGNet.ipynb
-These deliverables reflect the full pipeline from raw EEG preprocessing to both traditional ML and DL-based classification approaches.
+These deliverables reflect the full pipeline from raw EEG preprocessing to both traditional ML and DL models training.
 
 
 ## Results
@@ -78,6 +78,7 @@ This project started with the goal of integrating what I’ve previously learned
 I began by preprocessing the EEG data using MNE-Python and extracting temporal-domain features (band power). Then I implemented an SVM classifier, followed by a deep learning model based on EEGNet. Although the EEGNet part was more challenging due to model tuning and GPU limitations, I still managed to get a working prototype on Google Colab.
 
 Beyond modeling, I also learned how to structure a project repository, push updates to GitHub, and write clear documentation—sometimes after a few frustrating errors (and moments of panic). But overall, it was a fun and fulfilling learning experience, and a solid first attempt at decoding mental health signals using both machine learning and deep learning techniques.
+
 
 ### Tools I learned during this project
 
@@ -91,19 +92,27 @@ Beyond modeling, I also learned how to structure a project repository, push upda
 
 Preliminary results suggested that SVM achieved higher accuracy (> 0.95) compared to EEGNet (~0.8), possibly due to limited hyperparameter tuning and model optimization in this early-stage exploration.
 
+While deep learning provides promising end-to-end modeling capabilities, classical approaches like SVM may still offer superior performance when the dataset is small and features are carefully extracted.
+
 #### Deliverable 1: Preprocessing & Bandpower Feature
 
-EEG preprocessing pipeline using MNE-Python, and extraction of frequency-domain features (band power) for classification.
+An EEG preprocessing pipeline was implemented using MNE-Python, followed by the extraction of frequency-domain features (band power) for classification purposes.
 
 #### Deliverable 2: Machine Learning_SVM
 
-Training and evaluation of a Support Vector Machine (SVM) model based on extracted band power features.  
+A Support Vector Machine (SVM) model was trained and evaluated based on the extracted band power features. Grid search with 10-fold cross-validation was used to tune key hyperparameters (e.g., C, gamma).
+
+Several trials were conducted, including the integration of feature selection and dimensionality reduction using PCA. However, these modifications did not improve the accuracy, suggesting that the original band power features already effectively captured discriminative patterns related to depression in the EEG data, or that such techniques may not be beneficial in this particular case.
 
 #### Deliverable 3: Deep Learning_EEGNet
 
-Training and evaluation of a EEGNet model using preprocessing EEG epoch data, implemented on Google Colab with GPU support.
+An EEGNet model [page](https://github.com/vlawhern/arl-eegmodels) was trained and evaluated using preprocessed EEG epoch data, without extracting band power features. The model was implemented on Google Colab with GPU support.
+
+Hyperparameter tuning was conducted using both Keras Tuner and manual for-loop implementations, each within a 10-fold cross-validation framework. Due to time constraints, only minimal tuning was performed, which may explain the lower performance (~80% accuracy). Nevertheless, this pipeline demonstrates how CNN-based architectures can be applied end-to-end to EEG data.
 
 
 ## Conclusion and acknowledgement
 
+This project was my first attempt at an EEG decoding pipeline, from preprocessing, feature extraction, to model training with SVM and EEGNet. Though basic, it revealed skill gaps in computational neuroscience and BCI, guiding my future learning.
 
+I appreciate the supportive learning environment and resources from Brainhack School 2025, including video tutorials and coding notebooks. Special thanks to the researchers who shared the MDD EEG dataset on Figshare and the EEGNet developers for their open-source contribution. This project reflects the power of open science and community collaboration.
